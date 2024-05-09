@@ -1,7 +1,7 @@
 Dependencies for Project 'WHEELTEC', Target 'FreeRTOS': (DO NOT MODIFY !)
 CompilerVersion: 5060960::V5.06 update 7 (build 960)::.\ARM_Compiler_5.06u7
 F (.\main.c)(0x6221AF1A)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\ICM20948 -I ..\HUB_DRIVER -I ..\MPU6050-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Device\Include-D__UVISION_VERSION="537" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\main.o --omf_browse ..\obj\main.crf --depend ..\obj\main.d)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\sys\sys.h)(0x60C0AEE2)
 I (..\USER\stm32f4xx.h)(0x60C34BC6)
@@ -194,7 +194,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
@@ -269,7 +269,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
@@ -344,7 +344,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
@@ -419,7 +419,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
@@ -494,7 +494,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
@@ -529,9 +529,9 @@ I (..\HUB_DRIVER\HubDriverCan.h)(0x60B1CFE8)
 I (..\MPU6050\MPU6050.h)(0x6221ACA8)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdlib.h)(0x5E8E3CC2)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdarg.h)(0x5E8E3CC2)
-F (..\HARDWARE\motor.c)(0x638726C6)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\ICM20948 -I ..\HUB_DRIVER -I ..\MPU6050-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Device\Include-D__UVISION_VERSION="537" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\motor.o --omf_browse ..\obj\motor.crf --depend ..\obj\motor.d)
+F (..\HARDWARE\motor.c)(0x663D0BBF)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\ICM20948 -I ..\HUB_DRIVER -I ..\MPU6050-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Device\Include-D__UVISION_VERSION="537" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\motor.o --omf_browse ..\obj\motor.crf --depend ..\obj\motor.d)
 I (..\HARDWARE\motor.h)(0x6384820A)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\sys\sys.h)(0x60C0AEE2)
 I (..\USER\stm32f4xx.h)(0x60C34BC6)
@@ -644,7 +644,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
@@ -680,7 +680,7 @@ I (..\MPU6050\MPU6050.h)(0x6221ACA8)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdlib.h)(0x5E8E3CC2)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdarg.h)(0x5E8E3CC2)
 I (..\HARDWARE\oledfont.h)(0x60530C42)
-F (..\HARDWARE\pstwo.c)(0x631029DA)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\ICM20948 -I ..\HUB_DRIVER -I ..\MPU6050-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Device\Include-D__UVISION_VERSION="537" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\pstwo.o --omf_browse ..\obj\pstwo.crf --depend ..\obj\pstwo.d)
+F (..\HARDWARE\pstwo.c)(0x663D0C1C)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\ICM20948 -I ..\HUB_DRIVER -I ..\MPU6050-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Device\Include-D__UVISION_VERSION="537" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\pstwo.o --omf_browse ..\obj\pstwo.crf --depend ..\obj\pstwo.d)
 I (..\HARDWARE\pstwo.h)(0x62CD6592)
 I (..\SYSTEM\delay\delay.h)(0x60C0B30A)
 I (..\SYSTEM\sys\sys.h)(0x60C0AEE2)
@@ -721,7 +721,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
@@ -757,7 +757,7 @@ I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdlib.h)(0x5E8E3CC2)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdarg.h)(0x5E8E3CC2)
 F (..\HARDWARE\timer.c)(0x62AC39E0)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\ICM20948 -I ..\HUB_DRIVER -I ..\MPU6050-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Device\Include-D__UVISION_VERSION="537" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\timer.o --omf_browse ..\obj\timer.crf --depend ..\obj\timer.d)
 I (..\HARDWARE\timer.h)(0x60530C44)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\sys\sys.h)(0x60C0AEE2)
 I (..\USER\stm32f4xx.h)(0x60C34BC6)
@@ -871,7 +871,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (..\FreeRTOS\include\FreeRTOS.h)(0x573F3A18)
@@ -1810,7 +1810,7 @@ I (..\FreeRTOS\include\mpu_wrappers.h)(0x573F3A18)
 I (..\FreeRTOS\include\task.h)(0x573F3A18)
 I (..\FreeRTOS\include\list.h)(0x573F3A18)
 F (..\BALANCE\system.c)(0x647004D2)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\ICM20948 -I ..\HUB_DRIVER -I ..\MPU6050-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Device\Include-D__UVISION_VERSION="537" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\system.o --omf_browse ..\obj\system.crf --depend ..\obj\system.d)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\sys\sys.h)(0x60C0AEE2)
 I (..\USER\stm32f4xx.h)(0x60C34BC6)
@@ -1924,7 +1924,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
@@ -1999,7 +1999,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
@@ -2075,7 +2075,7 @@ I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
 I (..\HARDWARE\oled.h)(0x61CC473E)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
@@ -2149,7 +2149,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
@@ -2224,7 +2224,7 @@ I (..\FWLIB\inc\stm32f4xx_can.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
@@ -2300,7 +2300,7 @@ I (..\FWLIB\inc\stm32f4xx_dac.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_dcmi.h)(0x57FC5940)
 I (..\FWLIB\inc\stm32f4xx_fsmc.h)(0x57FC5940)
 I (..\MPU6050\I2C.h)(0x6221ACA8)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\usart\usart.h)(0x60C0AD08)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdio.h)(0x5E8E3CC2)
@@ -2336,7 +2336,7 @@ I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdlib.h)(0x5E8E3CC2)
 I (C:\Keil_v5\ARM\ARM_Compiler_5.06u7\include\stdarg.h)(0x5E8E3CC2)
 F (..\MPU6050\I2C.c)(0x6221ACA8)(-c --cpu Cortex-M4.fp.sp -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\CORE -I ..\SYSTEM\delay -I ..\SYSTEM\sys -I ..\SYSTEM\usart -I ..\USER -I ..\HARDWARE\LED -I ..\FWLIB\inc -I ..\FreeRTOS\include -I ..\FreeRTOS\portable\RVDS\ARM_CM4F -I ..\BALANCE -I ..\HARDWARE -I ..\ICM20948 -I ..\HUB_DRIVER -I ..\MPU6050-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Drivers\CMSIS\Device\ST\STM32F4xx\Include-IC:\Users\Chenzilang\AppData\Local\Arm\Packs\Keil\STM32F4xx_DFP\2.17.1\Device\Include-D__UVISION_VERSION="537" -DSTM32F407xx -DSTM32F40_41xxx -DUSE_STDPERIPH_DRIVER -D__FPU_PRESENT="1" -D__TARGET_FPU_VFP -DARM_MATH_CM4 -D__CC_ARM-o ..\obj\i2c.o --omf_browse ..\obj\i2c.crf --depend ..\obj\i2c.d)
 I (..\MPU6050\I2C.h)(0x6221ACA8)
-I (..\BALANCE\system.h)(0x6362563A)
+I (..\BALANCE\system.h)(0x663CF3AA)
 I (..\FreeRTOS\include\FreeRTOSConfig.h)(0x60C0B244)
 I (..\SYSTEM\sys\sys.h)(0x60C0AEE2)
 I (..\USER\stm32f4xx.h)(0x60C34BC6)
