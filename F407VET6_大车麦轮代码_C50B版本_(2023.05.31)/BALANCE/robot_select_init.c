@@ -20,6 +20,8 @@ void Robot_Select(void)
   if(Car_Mode>10)Car_Mode=10;
 	#if Mec
 	{	
+		/*here cancel the car mode selecrion
+		
 		if (Car_Mode==0)  Robot_Init(SENIOR_MEC_BS_wheelspacing, SENIOR_MEC_BS_axlespacing, MD36N_27, Hall_13, Mecanum_100); //SENIOR_MEC_BS - 高配麦轮摆式悬挂 //BS: Pendulum suspension
 		if (Car_Mode==1)  Robot_Init(SENIOR_MEC_BS_wheelspacing, SENIOR_MEC_BS_axlespacing, MD36N_27, Hall_13, Mecanum_100); //SENIOR_MEC_BS - 高配麦轮摆式悬挂  
 		
@@ -35,7 +37,11 @@ void Robot_Select(void)
 		if (Car_Mode==8)  Robot_Init(FLAGSHIP_MEC_BS_wheelspacing,    FLAGSHIP_MEC_BS_axlespacing,    MD60N_47, Hall_13, Mecanum_152); //FlagShip_MEC_DL_47 - 旗舰麦轮摆式悬挂重载型
 		
 		if (Car_Mode==9)   Robot_Init(FLAGSHIP_MEC_DL_wheelspacing,FLAGSHIP_MEC_DL_axlespacing,MD60N_18, Hall_13, Mecanum_152); //flagship_MEC_dl_18 - 旗舰麦轮独立悬挂常规型
-		if (Car_Mode==10)  Robot_Init(FLAGSHIP_MEC_DL_wheelspacing,FLAGSHIP_MEC_DL_axlespacing,MD60N_47, Hall_13, Mecanum_152); //flagship_MEC_dl_47 - 旗舰麦轮独立悬挂重载型
+		
+		
+		if (Car_Mode==10)  Robot_Init(FLAGSHIP_MEC_DL_wheelspacing,FLAGSHIP_MEC_DL_axlespacing,MD60N_47, Hall_13, Mecanum_152); */ //flagship_MEC_dl_47 - 旗舰麦轮独立悬挂重载型
+		
+		Robot_Init(0.25,0.25,51,17,100);
 	}
 	#elif Omni
 	{

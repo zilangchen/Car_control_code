@@ -119,8 +119,14 @@ void Balance_task(void *pvParameters)
 				 MOTOR_D.Motor_Pwm=Incremental_PI_D(MOTOR_D.Encoder, MOTOR_D.Target);
 				 
 					#if Mec
+					Set_Pwm(MOTOR_A.Motor_Pwm,MOTOR_B.Motor_Pwm,MOTOR_C.Motor_Pwm,MOTOR_D.Motor_Pwm);
+					
+					
+					
 					//Set different PWM control polarity according to different car models
 					//根据不同小车型号设置不同的PWM控制极性
+					
+					/*
 							 if (Car_Mode==0)  Set_Pwm( MOTOR_A.Motor_Pwm, MOTOR_B.Motor_Pwm, MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm);    //高配麦轮无轴承座       SENIOR_MEC_N    MD36N_27
 					else if (Car_Mode==1)	 Set_Pwm( MOTOR_A.Motor_Pwm, MOTOR_B.Motor_Pwm, MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm);    //高配麦轮摆式悬挂       SENIOR_MEC_BS   MD36N_27
 					else if (Car_Mode==2)  Set_Pwm( MOTOR_A.Motor_Pwm, MOTOR_B.Motor_Pwm, MOTOR_C.Motor_Pwm, MOTOR_D.Motor_Pwm);    //高配麦轮独立悬挂       SENIOR_MEC_DL   MD36N_27
@@ -132,6 +138,8 @@ void Balance_task(void *pvParameters)
 				  else if (Car_Mode==8)	 Set_Pwm(-MOTOR_A.Motor_Pwm,-MOTOR_B.Motor_Pwm,-MOTOR_C.Motor_Pwm,-MOTOR_D.Motor_Pwm);    //旗舰麦轮摆式悬挂重载型 flagship_MEC_bs MD60N_47
 				  else if (Car_Mode==9)	 Set_Pwm(-MOTOR_A.Motor_Pwm,-MOTOR_B.Motor_Pwm,-MOTOR_C.Motor_Pwm,-MOTOR_D.Motor_Pwm);    //旗舰麦轮独立悬挂常规型 flagship_MEC_dl MD60N_18
 					else if (Car_Mode==10) Set_Pwm(-MOTOR_A.Motor_Pwm,-MOTOR_B.Motor_Pwm,-MOTOR_C.Motor_Pwm,-MOTOR_D.Motor_Pwm);    //旗舰麦轮独立悬挂重载型 flagship_MEC_dl MD60N_47
+					
+					*/
 
 				 #elif Omni
 					//Set different PWM control polarity according to different car models
