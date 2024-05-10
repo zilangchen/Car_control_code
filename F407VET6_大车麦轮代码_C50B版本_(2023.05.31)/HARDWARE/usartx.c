@@ -47,11 +47,11 @@ Send_Data.Sensor_Str.Frame_Header = FRAME_HEADER; //Frame_header //帧头
 	//According to different vehicle types, different kinematics algorithms were selected to carry out the forward kinematics solution, 
 	//and the three-axis velocity was obtained from each wheel velocity
 	//根据不同车型选择不同运动学算法进行运动学正解，从各车轮速度求出三轴速度
-	#if Mec
+	//#if Mec
 	Motion_analysis_transformation(MOTOR_A.Encoder,MOTOR_B.Encoder,MOTOR_C.Encoder,MOTOR_D.Encoder); 
-	#elif Omni
-	Motion_analysis_transformation(MOTOR_A.Encoder,MOTOR_B.Encoder,MOTOR_C.Encoder); 
-	#endif
+	//#elif Omni
+	//Motion_analysis_transformation(MOTOR_A.Encoder,MOTOR_B.Encoder,MOTOR_C.Encoder); 
+	//#endif
 	
 	//The acceleration of the triaxial acceleration //加速度计三轴加速度
 	Send_Data.Sensor_Str.Accelerometer.X_data= accel[1]; //The accelerometer Y-axis is converted to the ros coordinate X axis //加速度计Y轴转换到ROS坐标X轴
@@ -593,13 +593,14 @@ Output  : none
 入口参数：各路编码器的数据
 返回  值：无
 **************************************************************************/
-#if Mec
+//#if Mec
 void Motion_analysis_transformation(float Encoder_A,float Encoder_B,float Encoder_C,float Encoder_D)
 {
 	Send_Data.Sensor_Str.X_speed = ((Encoder_A+Encoder_B+Encoder_C+Encoder_D)/4)*1000; 
 	Send_Data.Sensor_Str.Y_speed = ((Encoder_A-Encoder_B+Encoder_C-Encoder_D)/4)*1000; 
 	Send_Data.Sensor_Str.Z_speed = ((-Encoder_A-Encoder_B+Encoder_C+Encoder_D)/4/(Wheel_axlespacing+Wheel_spacing))*1000;
 }
+/*
 #elif Omni
 void Motion_analysis_transformation(float Encoder_A,float Encoder_B,float Encoder_C)
 {
@@ -608,6 +609,8 @@ void Motion_analysis_transformation(float Encoder_A,float Encoder_B,float Encode
 	Send_Data.Sensor_Str.Z_speed = ((Encoder_A+Encoder_B+Encoder_C)/3/Omni_turn_radiaus)*1000;
 }
 #endif
+*/
+
 /**************************************************************************
 Function: Serial port 1 sends data
 Input   : The data to send

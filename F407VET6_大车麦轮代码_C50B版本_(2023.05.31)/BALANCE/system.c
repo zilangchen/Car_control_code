@@ -1,23 +1,3 @@
-/***********************************************
-公司：东莞市微宏智能科技有限公司
-品牌：WHEELTEC
-官网：wheeltec.net
-淘宝店铺：shop114407458.taobao.com 
-速卖通: https://minibalance.aliexpress.com/store/4455017
-版本：V3.5
-修改时间：2021-01-29
-
-Company: WeiHong Co.Ltd
-Brand: WHEELTEC
-Website: wheeltec.net
-Taobao shop: shop114407458.taobao.com 
-Aliexpress: https://minibalance.aliexpress.com/store/4455017
-Version: V3.5
-Update：2021-01-29
-
-All rights reserved
-***********************************************/
-
 #include "system.h"
 
 //Robot software fails to flag bits
@@ -80,7 +60,7 @@ float Omni_turn_radiaus;
 //PS2 controller, Bluetooth APP, aircraft model controller, CAN communication, serial port 1 communication control flag bit.
 //These 5 flag bits are all 0 by default, representing the serial port 3 control mode
 //PS2手柄、蓝牙APP、航模手柄、CAN通信、串口1通信控制标志位。这5个标志位默认都为0，代表串口3控制模式
-u8 PS2_ON_Flag=0, APP_ON_Flag=0, Remote_ON_Flag=0, CAN_ON_Flag=0, Usart_ON_Flag=0; 
+u8 PS2_ON_Flag=1, APP_ON_Flag=0, Remote_ON_Flag=0, CAN_ON_Flag=0, Usart_ON_Flag=0; 
 
 //Bluetooth remote control associated flag bits
 //蓝牙遥控相关的标志位
@@ -186,7 +166,7 @@ void systemInit(void)
 	
 	//Initialize the model remote control interface		
 	//初始化航模遥控接口
-		TIM1_Cap_Init(9999,168-1);  //高级定时器TIM1的频率为168M
+	//TIM1_Cap_Init(9999,168-1);  //高级定时器TIM1的频率为168M
 	//Initialize the hardware interface to the PS2 controller
 	//初始化与PS2手柄连接的硬件接口
 	PS2_Init();
