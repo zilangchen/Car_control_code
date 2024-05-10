@@ -25,7 +25,7 @@
 
 #define IN1_PORTB GPIOC			 //BIN1
 #define IN1_PIN_B GPIO_Pin_0 //BIN1
-#define BIN1 	  PCout(0)		 //BIN1
+#define BIN1 	  PCout(0)	 	 //BIN1
 
 #define IN2_PORTB GPIOB			 //BIN2
 #define IN2_PIN_B GPIO_Pin_14 //BIN2
@@ -51,13 +51,13 @@
 #define PWM_PIN_D GPIO_Pin_6 //PWMD
 #define PWMD 	  TIM8->CCR1	 //PWMD
 
-#define IN1_PORTD GPIOA			  //DIN1
-#define IN1_PIN_D GPIO_Pin_5	//DIN1
-#define DIN1 	  PAout(5)		  //DIN1
+#define IN1_PORTD GPIOC			  //DIN1
+#define IN1_PIN_D GPIO_Pin_12	//DIN1
+#define DIN1 	  PCout(12)		  //DIN1
 
 #define IN2_PORTD GPIOA			  //DIN2
-#define IN2_PIN_D GPIO_Pin_4	//DIN2
-#define DIN2 	  PAout(4)		  //DIN2
+#define IN2_PIN_D GPIO_Pin_8	//DIN2
+#define DIN2 	  PAout(8)		  //DIN2
 
 
 

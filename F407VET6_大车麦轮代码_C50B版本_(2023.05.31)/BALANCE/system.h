@@ -89,9 +89,9 @@ extern int robot_mode_check_flag;
 void systemInit(void);
 
 /***Macros define***/ /***宏定义***/
-//After starting the car (1000/100Hz =10) for seconds, it is allowed to control the car to move
-//开机(1000/100hz=10)秒后才允许控制小车进行运动
-#define CONTROL_DELAY		1000
+//After starting the car (300/100Hz =3) for seconds, it is allowed to control the car to move
+//开机(300/100hz=3)秒后才允许控制小车进行运动
+#define CONTROL_DELAY		300
 //The number of robot types to determine the value of Divisor_Mode. There are currently 6 car types
 //机器人型号数量，决定Divisor_Mode的值，目前有6种小车类型
 #define CAR_NUMBER    7      

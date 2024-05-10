@@ -13,14 +13,21 @@ Output  : none
 **************************************************************************/
 void Robot_Select(void)
 {
+	Robot_Init(0.25,0.25,51,17,100);
+	
+	
+	/*
 	//The ADC value is variable in segments, depending on the number of car models. Currently there are 6 car models, CAR_NUMBER=6
   //ADC值分段变量，取决于小车型号数量，目前有6种小车型号，CAR_NUMBER=6
 	Divisor_Mode=4096/CAR_NUMBER+5;
 	Car_Mode=(int) ((Get_adc_Average(CAR_MODE_ADC,10))/Divisor_Mode); //Collect the pin information of potentiometer //采集电位器引脚信息	
   if(Car_Mode>10)Car_Mode=10;
+	*/
+	
+/*
 	#if Mec
 	{	
-		/*here cancel the car mode selecrion
+
 		
 		if (Car_Mode==0)  Robot_Init(SENIOR_MEC_BS_wheelspacing, SENIOR_MEC_BS_axlespacing, MD36N_27, Hall_13, Mecanum_100); //SENIOR_MEC_BS - 高配麦轮摆式悬挂 //BS: Pendulum suspension
 		if (Car_Mode==1)  Robot_Init(SENIOR_MEC_BS_wheelspacing, SENIOR_MEC_BS_axlespacing, MD36N_27, Hall_13, Mecanum_100); //SENIOR_MEC_BS - 高配麦轮摆式悬挂  
@@ -41,8 +48,10 @@ void Robot_Select(void)
 		
 		if (Car_Mode==10)  Robot_Init(FLAGSHIP_MEC_DL_wheelspacing,FLAGSHIP_MEC_DL_axlespacing,MD60N_47, Hall_13, Mecanum_152); */ //flagship_MEC_dl_47 - 旗舰麦轮独立悬挂重载型
 		
-		Robot_Init(0.25,0.25,51,17,100);
-	}
+		/*
+	}*/
+
+/*
 	#elif Omni
 	{
 		if (Car_Mode==0)  Robot_Init(Omni_Turn_Radiaus_164, MD36N_5_18, Hall_13, FullDirecion_75); //SENIOR_OMNI_5_18 - 高配全向轮三角形极速型
@@ -55,10 +64,12 @@ void Robot_Select(void)
 		if (Car_Mode==6)  Robot_Init(Omni_Turn_Radiaus_290, MD60N_18,   Hall_13, FullDirecion_203);//TOP_OMNI_18      - 顶配全向轮常规 直径203
 	}
 	#endif
+
+*/
 }
 
 
-#if Mec
+//#if Mec
 /**************************************************************************
 Function: Initialize cart parameters
 Input   : wheelspacing, axlespacing, omni_rotation_radiaus, motor_gear_ratio, Number_of_encoder_lines, tyre_diameter
@@ -86,7 +97,11 @@ void Robot_Init(float wheelspacing,float axlespacing,int gearratio,int Accuracy,
 	Wheel_axlespacing=Robot_Parament.AxleSpacing;    
 }
 
+
+
+/*
 #elif Omni
+*/
 /**************************************************************************
 Function: Initialize cart parameters
 Input   : omni_rotation_radiaus, motor_gear_ratio, Number_of_encoder_lines, tyre_diameter
@@ -95,6 +110,7 @@ Output  : none
 入口参数：自转半径 电机减速比 电机编码器精度 轮胎直径
 返回  值：无
 **************************************************************************/
+/*
 void Robot_Init(float omni_turn_radiaus,int gearratio,int Accuracy,float tyre_diameter)
 {
 	//Rotation radius of omnidirectional trolley
@@ -123,3 +139,4 @@ void Robot_Init(float omni_turn_radiaus,int gearratio,int Accuracy,float tyre_di
 
 #endif
 
+*/
