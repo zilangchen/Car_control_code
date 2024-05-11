@@ -61,12 +61,14 @@ void Balance_task(void *pvParameters)
 				
 				//等陀螺仪初始化完成后,检测机器人型号是否选择错误
 				//When the gyroscope is initialized, check whether the robot model is selected incorrectly
+				/*
 				if(CONTROL_DELAY<Time_count && Time_count<CONTROL_DELAY+200) //Advance 2 seconds to test //前进2秒进行测试
 				{
 					Drive_Motor(0.50,0.00, 0.00); 
 					//robot_mode_check(); //Detection function //检测函数
 				}
-				else if(CONTROL_DELAY+200<Time_count && Time_count<CONTROL_DELAY+300) Drive_Motor(0,0,0); //The stop forward control is completed //检测完成停止前进控制
+				else if(CONTROL_DELAY+200<Time_count && Time_count<CONTROL_DELAY+250) Drive_Motor(0,0,0); //The stop forward control is completed //检测完成停止前进控制
+				*/
 				
 				//If there is no abnormity in the battery voltage, and the enable switch is in the ON position,
 				//and the software failure flag is 0, or the model detection marker is 0
@@ -347,21 +349,23 @@ pwm+=Kp[e（k）-e(k-1)]+Ki*e(k)
 **************************************************************************/
 int Incremental_PI_A (float Encoder,float Target)
 {
+	
 	 static float Bias,Pwm,Last_bias;
 	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
 	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
-	 if(Pwm>16800)Pwm=16800;
-	 if(Pwm<-16800)Pwm=-16800;
+	 if(Pwm>10000)Pwm=10000;
+	 if(Pwm<-10000)Pwm=-10000;
 	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
 	 return Pwm; 
+
 }
 int Incremental_PI_B (float Encoder,float Target)
 {
 	 static float Bias,Pwm,Last_bias;
 	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
 	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
-	 if(Pwm>16800)Pwm=16800;
-	 if(Pwm<-16800)Pwm=-16800;
+	 if(Pwm>10000)Pwm=10000;
+	 if(Pwm<-10000)Pwm=-10000;
 	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
 	 return Pwm; 
 }
@@ -370,8 +374,8 @@ int Incremental_PI_C (float Encoder,float Target)
 	 static float Bias,Pwm,Last_bias;
 	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
 	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
-	 if(Pwm>16800)Pwm=16800;
-	 if(Pwm<-16800)Pwm=-16800;
+	 if(Pwm>10000)Pwm=10000;
+	 if(Pwm<-10000)Pwm=-10000;
 	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
 	 return Pwm;    
 }
@@ -380,8 +384,8 @@ int Incremental_PI_D (float Encoder,float Target)
 	 static float Bias,Pwm,Last_bias;
 	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
 	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
-	 if(Pwm>16800)Pwm=16800;
-	 if(Pwm<-16800)Pwm=-16800;
+	 if(Pwm>10000)Pwm=10000;
+	 if(Pwm<-10000)Pwm=-10000;
 	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
 	 return Pwm;    
 }
