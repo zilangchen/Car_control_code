@@ -52,10 +52,25 @@ void Balance_task(void *pvParameters)
 			
 			//#if Mec
 			Set_Pwm(MOTOR_A.Motor_Pwm,MOTOR_B.Motor_Pwm,MOTOR_C.Motor_Pwm,MOTOR_D.Motor_Pwm);
+			Excute_Servo_Group1(Servo_group_1);
+			Excute_Servo_Group2(Servo_group_2);
+
 		}
 		//如果Turn_Off(Voltage)返回值为1，或者型号检测标志位为1，不允许控制小车进行运动，PWM值设置为0
 		else Set_Pwm(0,0,0,0);			
     }	
+}
+
+void Excute_Servo_Group1(int servo_group1_command)
+{
+	if(servo_group1_command==0) Servo=0;
+	else if(servo_group1_command==1) Servo=1;
+}
+
+void Excute_Servo_Group2(int servo_group2_command)
+{
+	if(servo_group2_command==0) Servo=0;
+	else if(servo_group2_command==1) Servo=1;
 }
 
 /**************************************************************************
@@ -103,40 +118,40 @@ Output  : none
 **************************************************************************/
 void Set_Pwm(int motor_a,int motor_b,int motor_c,int motor_d)
 {  
-	  //Forward and reverse control of motor
-	  //电机正反转控制
-		if(motor_a>0)			AIN1=0,		AIN2=1;   
-		else 	            AIN1=1,		AIN2=0;
+	//Forward and reverse control of motor
+	//电机正反转控制
+	if(motor_a>0)			AIN1=0,		AIN2=1;   
+	else 	            AIN1=1,		AIN2=0;
     //Motor speed control 
-	  //电机转速控制	
-	 TIM_SetCompare4(TIM8,myabs(motor_a*A));
-	
-	
-	  //Forward and reverse control of motor
-	  //电机正反转控制
-		if(motor_b>0)			BIN1=0,		BIN2=1;   
-		else 	            BIN1=1,			BIN2=0;
-	  //Motor speed control 
-	  //电机转速控制
-		TIM_SetCompare3(TIM8,myabs(motor_b*B));
+	//电机转速控制	
+	TIM_SetCompare4(TIM8,myabs(motor_a*A));
 	
 	
 	//Forward and reverse control of motor
-	  //电机正反转控制
-		if(motor_c>0)			CIN2=0,		CIN1=1;   
-		else 	            CIN2=1,			CIN1=0;
+	//电机正反转控制
+	if(motor_b>0)			BIN1=0,		BIN2=1;   
+	else 	            BIN1=1,			BIN2=0;
+	//Motor speed control 
+	//电机转速控制
+	TIM_SetCompare3(TIM8,myabs(motor_b*B));
+	
+	
+	//Forward and reverse control of motor
+	//电机正反转控制
+	if(motor_c>0)			CIN2=0,		CIN1=1;   
+	else 	            CIN2=1,			CIN1=0;
     //Motor speed control 
-	  //电机转速控制	
-	 TIM_SetCompare2(TIM8,myabs(motor_c*C));
+	//电机转速控制	
+	TIM_SetCompare2(TIM8,myabs(motor_c*C));
 	
 	
-	  //Forward and reverse control of motor
-	  //电机正反转控制
-		if(motor_d>0)			DIN2=0,		DIN1=1;   
-		else 	           DIN2=1,			DIN1=0;
-	  //Motor speed control 
-	  //电机转速控制
-		TIM_SetCompare1(TIM8,myabs(motor_d*DD));
+	//Forward and reverse control of motor
+	//电机正反转控制
+	if(motor_d>0)			DIN2=0,		DIN1=1;   
+	else 	           DIN2=1,			DIN1=0;
+	//Motor speed control 
+	//电机转速控制
+	TIM_SetCompare1(TIM8,myabs(motor_d*DD));
 }
 
 /**************************************************************************
@@ -149,10 +164,10 @@ Output  : none
 **************************************************************************/
 void Limit_Pwm(int amplitude)
 {	
-	    MOTOR_A.Motor_Pwm=target_limit_float(MOTOR_A.Motor_Pwm,-amplitude,amplitude);
-	    MOTOR_B.Motor_Pwm=target_limit_float(MOTOR_B.Motor_Pwm,-amplitude,amplitude);
-		  MOTOR_C.Motor_Pwm=target_limit_float(MOTOR_C.Motor_Pwm,-amplitude,amplitude);
-	    MOTOR_D.Motor_Pwm=target_limit_float(MOTOR_D.Motor_Pwm,-amplitude,amplitude);
+	MOTOR_A.Motor_Pwm=target_limit_float(MOTOR_A.Motor_Pwm,-amplitude,amplitude);
+	MOTOR_B.Motor_Pwm=target_limit_float(MOTOR_B.Motor_Pwm,-amplitude,amplitude);
+	MOTOR_C.Motor_Pwm=target_limit_float(MOTOR_C.Motor_Pwm,-amplitude,amplitude);
+	MOTOR_D.Motor_Pwm=target_limit_float(MOTOR_D.Motor_Pwm,-amplitude,amplitude);
 }	    
 /**************************************************************************
 Function: Limiting function
@@ -218,10 +233,10 @@ Output  : unsigned int
 **************************************************************************/
 u32 myabs(long int a)
 { 		   
-	  u32 temp;
-		if(a<0)  temp=-a;  
-	  else temp=a;
-	  return temp;
+	u32 temp;
+	if(a<0)  temp=-a;  
+	else temp=a;
+	return temp;
 }
 /**************************************************************************
 Function: Floating-point data calculates the absolute value
@@ -261,68 +276,65 @@ pwm+=Kp[e（k）-e(k-1)]+Ki*e(k)
 **************************************************************************/
 int Incremental_PI_A (float Encoder,float Target)
 {
-	 static float Bias,Pwm,Last_bias;
-	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
-	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
-	 if(Pwm>16800)Pwm=16800;
-	 if(Pwm<-16800)Pwm=-16800;
-	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
-	 return Pwm; 
+	static float Bias,Pwm,Last_bias;
+	Bias=Target-Encoder; //Calculate the deviation //计算偏差
+	Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
+	if(Pwm>16800)Pwm=16800;
+	if(Pwm<-16800)Pwm=-16800;
+	Last_bias=Bias; //Save the last deviation //保存上一次偏差 
+	return Pwm; 
 }
 int Incremental_PI_B (float Encoder,float Target)
 {
-	 static float Bias,Pwm,Last_bias;
-	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
-	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
-	 if(Pwm>16800)Pwm=16800;
-	 if(Pwm<-16800)Pwm=-16800;
-	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
-	 return Pwm; 
+	static float Bias,Pwm,Last_bias;
+	Bias=Target-Encoder; //Calculate the deviation //计算偏差
+	Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
+	if(Pwm>16800)Pwm=16800;
+	if(Pwm<-16800)Pwm=-16800;
+	Last_bias=Bias; //Save the last deviation //保存上一次偏差 
+	return Pwm; 
 }
 int Incremental_PI_C (float Encoder,float Target)
 { 	
-	 static float Bias,Pwm,Last_bias;
-	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
-	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
-	 if(Pwm>16800)Pwm=16800;
-	 if(Pwm<-16800)Pwm=-16800;
-	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
-	 return Pwm;    
+	static float Bias,Pwm,Last_bias;
+	Bias=Target-Encoder; //Calculate the deviation //计算偏差
+	Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
+	if(Pwm>16800)Pwm=16800;
+	if(Pwm<-16800)Pwm=-16800;
+	Last_bias=Bias; //Save the last deviation //保存上一次偏差 
+	return Pwm;    
 }
 int Incremental_PI_D (float Encoder,float Target)
 { 	
-	 static float Bias,Pwm,Last_bias;
-	 Bias=Target-Encoder; //Calculate the deviation //计算偏差
-	 Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
-	 if(Pwm>16800)Pwm=16800;
-	 if(Pwm<-16800)Pwm=-16800;
-	 Last_bias=Bias; //Save the last deviation //保存上一次偏差 
-	 return Pwm;    
+	static float Bias,Pwm,Last_bias;
+	Bias=Target-Encoder; //Calculate the deviation //计算偏差
+	Pwm+=Velocity_KP*(Bias-Last_bias)+Velocity_KI*Bias; 
+	if(Pwm>16800)Pwm=16800;
+	if(Pwm<-16800)Pwm=-16800;
+	Last_bias=Bias; //Save the last deviation //保存上一次偏差 
+	return Pwm;    
 }
 
 /**************************************************************************
-Function: Processes the command sent by APP through usart 2
-Input   : none
-Output  : none
 函数功能：对APP通过串口2发送过来的命令进行处理
 入口参数：无
 返回  值：无
 **************************************************************************/
 void Get_RC(void)
 {
-	 u8 Flag_Move=1;
+	u8 Flag_Move=1;
 
 	switch(Flag_Direction) //Handle direction control commands //处理方向控制命令
 	{ 
-		case 1:      Move_X=RC_Velocity;  	 Move_Y=0;             Flag_Move=1;    break;
-		case 2:      Move_X=RC_Velocity;  	 Move_Y=-RC_Velocity;  Flag_Move=1; 	 break;
-		case 3:      Move_X=0;      				 Move_Y=-RC_Velocity;  Flag_Move=1; 	 break;
-		case 4:      Move_X=-RC_Velocity;  	 Move_Y=-RC_Velocity;  Flag_Move=1;    break;
-		case 5:      Move_X=-RC_Velocity;  	 Move_Y=0;             Flag_Move=1;    break;
-		case 6:      Move_X=-RC_Velocity;  	 Move_Y=RC_Velocity;   Flag_Move=1;    break;
-		case 7:      Move_X=0;     	 			 	 Move_Y=RC_Velocity;   Flag_Move=1;    break;
-		case 8:      Move_X=RC_Velocity; 	 	 Move_Y=RC_Velocity;   Flag_Move=1;    break; 
-		default:     Move_X=0;               Move_Y=0;             Flag_Move=0;    break;
+		case 1:      Move_X=RC_Velocity;	Move_Y=0;             	Flag_Move=1;		break;
+		case 2:      Move_X=RC_Velocity;	Move_Y=-RC_Velocity;	Flag_Move=1;		break;
+		case 3:      Move_X=0;				Move_Y=-RC_Velocity;  	Flag_Move=1;		break;
+		case 4:      Move_X=-RC_Velocity;	Move_Y=-RC_Velocity;  	Flag_Move=1;		break;
+		case 5:      Move_X=-RC_Velocity;	Move_Y=0;             	Flag_Move=1;    	break;
+		case 6:      Move_X=-RC_Velocity;	Move_Y=RC_Velocity;   	Flag_Move=1;    	break;
+		case 7:      Move_X=0;				Move_Y=RC_Velocity;   	Flag_Move=1;    	break;
+		case 8:      Move_X=RC_Velocity;	Move_Y=RC_Velocity;   	Flag_Move=1;    	break; 
+		default:     Move_X=0;				Move_Y=0;             	Flag_Move=0;    	break;
 	}
 	if(Flag_Move==0)
 	{	
@@ -333,11 +345,11 @@ void Get_RC(void)
 		else 		               Move_Z=0;                       //stop           //停止
 	}
 	
-	//Unit conversion, mm/s -> m/s
-  //单位转换，mm/s -> m/s	
-	Move_X=Move_X/1000;       Move_Y=Move_Y/1000;         Move_Z=Move_Z;
+  	//单位转换，mm/s -> m/s	
+	Move_X=Move_X/1000;       
+	Move_Y=Move_Y/1000;         
+	Move_Z=Move_Z;
 	
-  //Control target value is obtained and kinematics analysis is performed
 	//得到控制目标值，进行运动学分析
 	Drive_Motor(Move_X,Move_Y,Move_Z);
 }
@@ -352,44 +364,45 @@ Output  : none
 void PS2_control(void)
 {
    	int LX,LY,RY;
-		int Threshold=20; //Threshold to ignore small movements of the joystick //阈值，忽略摇杆小幅度动作
-			
-	  //128 is the median.The definition of X and Y in the PS2 coordinate system is different from that in the ROS coordinate system
-	  //128为中值。PS2坐标系与ROS坐标系对X、Y的定义不一样
-		LY=-(PS2_LX-128);
-		LX=-(PS2_LY-128);
-		RY=-(PS2_RX-128);
+	int Threshold=20; //Threshold to ignore small movements of the joystick //阈值，忽略摇杆小幅度动作
+
+	//128为中值。PS2坐标系与ROS坐标系对X、Y的定义不一样
+	LY=-(PS2_LX-128);
+	LX=-(PS2_LY-128);
+	RY=-(PS2_RX-128);
+
+	//Ignore small movements of the joystick //忽略摇杆小幅度动作
+	if(LX>-Threshold&&LX<Threshold)LX=0;
+	if(LY>-Threshold&&LY<Threshold)LY=0;
+	if(RY>-Threshold&&RY<Threshold)RY=0;
+	if(LX==0) Move_X=Move_X/1.2f;
+	if(RY==0) Move_Z=Move_Z/1.2f;
+
+	if (PS2_KEY==11)		RC_Velocity+=5;  //To accelerate//加速
+	else if(PS2_KEY==9)		RC_Velocity-=5;  //To slow down //减速	
+	else if (PS2_KEY==13)	Servo_group_1 = 0;
+	else if (PS2_KEY==14)	Servo_group_1 = 1;
+	else if (PS2_KEY==15)	Servo_group_2 = 0;
+	else if (PS2_KEY==16)	Servo_group_2 = 1;
 	
-	  //Ignore small movements of the joystick //忽略摇杆小幅度动作
-		if(LX>-Threshold&&LX<Threshold)LX=0;
-		if(LY>-Threshold&&LY<Threshold)LY=0;
-		if(RY>-Threshold&&RY<Threshold)RY=0;
-		if(LX==0) Move_X=Move_X/1.2f;
-		if(RY==0) Move_Z=Move_Z/1.2f;
-	
-	  if (PS2_KEY==11)		RC_Velocity+=5;  //To accelerate//加速
-	  else if(PS2_KEY==9)	RC_Velocity-=5;  //To slow down //减速	
-	
-		if(RC_Velocity<0)   RC_Velocity=0;
-	
-	  //Handle PS2 controller control commands
-	  //对PS2手柄控制命令进行处理
-		Move_X=LX;
-		Move_Y=LY;
-		Move_Z=RY;
-		Move_X=Move_X*RC_Velocity/128;
-		Move_Y=Move_Y*RC_Velocity/128;
-		Move_Z=Move_Z*(PI/4)*(RC_Velocity/500)/128;
-		 
-		 
-		//Unit conversion, mm/s -> m/s
-    //单位转换，mm/s -> m/s	
-		Move_X=Move_X/1000;
-		Move_Y=Move_Y/1000;
-		 
-		//Control target value is obtained and kinematics analysis is performed
-	  //得到控制目标值，进行运动学分析
-		Drive_Motor(Move_X,Move_Y,Move_Z);	
+
+	if(RC_Velocity<0)   	RC_Velocity=0;
+
+	//Handle PS2 controller control commands
+	//对PS2手柄控制命令进行处理
+	Move_X=LX;
+	Move_Y=LY;
+	Move_Z=RY;
+	Move_X=Move_X*RC_Velocity/128;
+	Move_Y=Move_Y*RC_Velocity/128;
+	Move_Z=Move_Z*(PI/4)*(RC_Velocity/500)/128;
+
+	//单位转换，mm/s -> m/s	
+	Move_X=Move_X/1000;
+	Move_Y=Move_Y/1000;
+		
+	//得到控制目标值，进行运动学分析
+	Drive_Motor(Move_X,Move_Y,Move_Z);	
 }
 
 /**************************************************************************
@@ -402,32 +415,32 @@ Output  : none
 **************************************************************************/
 void Remote_Control(void)
 {
-	  //Data within 1 second after entering the model control mode will not be processed
-	  //对进入航模控制模式后1秒内的数据不处理
+	//Data within 1 second after entering the model control mode will not be processed
+	//对进入航模控制模式后1秒内的数据不处理
     static u8 thrice=100;
     int Threshold=100;
 
-	  //limiter //限幅
-    int LX,LY,RY,RX,Remote_RCvelocity; 					//
-	  static float Target_LX,Target_LY,Target_RY;			//
-		Remoter_Ch1=target_limit_int(Remoter_Ch1,1000,2000);
-		Remoter_Ch2=target_limit_int(Remoter_Ch2,1000,2000);
-		Remoter_Ch3=target_limit_int(Remoter_Ch3,1000,2000);
-		Remoter_Ch4=target_limit_int(Remoter_Ch4,1000,2000);
+	//limiter //限幅
+    int LX,LY,RY,RX,Remote_RCvelocity; 					
+	static float Target_LX,Target_LY,Target_RY;			
+	Remoter_Ch1=target_limit_int(Remoter_Ch1,1000,2000);
+	Remoter_Ch2=target_limit_int(Remoter_Ch2,1000,2000);
+	Remoter_Ch3=target_limit_int(Remoter_Ch3,1000,2000);
+	Remoter_Ch4=target_limit_int(Remoter_Ch4,1000,2000);
 
-		// Front and back direction of left rocker. Control forward and backward.
-	  //左摇杆前后方向。控制前进后退。
+	// Front and back direction of left rocker. Control forward and backward.
+	//左摇杆前后方向。控制前进后退。
     LX=Remoter_Ch2-1500;
 	
-		//Left joystick left and right. Control left and right movement.
-	  //左摇杆左右方向。控制左右移动。
+	//Left joystick left and right. Control left and right movement.
+	//左摇杆左右方向。控制左右移动。
     LY=Remoter_Ch4-1500;
 	
-		  //Front and back direction of right rocker. Throttle/acceleration/deceleration.
-		//右摇杆前后方向。油门/加减速。
-	  RX=Remoter_Ch3-1500;										//
+	//Front and back direction of right rocker. Throttle/acceleration/deceleration.
+	//右摇杆前后方向。油门/加减速。
+	RX=Remoter_Ch3-1500;										//
     //Right stick left and right. To control the rotation. 
-		//右摇杆左右方向。控制自转。
+	//右摇杆左右方向。控制自转。
     RY=Remoter_Ch1-1500; 
 
     if(LX>-Threshold&&LX<Threshold)LX=0;
@@ -435,36 +448,34 @@ void Remote_Control(void)
     if(RY>-Threshold&&RY<Threshold)RY=0;
 
 		
-		if(LX==0) Target_LX=Target_LX/1.2f;
-		if(LY==0) Target_LY=Target_LY/1.2f;
-		if(RY==0) Target_RY=Target_RY/1.2f;
+	if(LX==0) Target_LX=Target_LX/1.2f;
+	if(LY==0) Target_LY=Target_LY/1.2f;
+	if(RY==0) Target_RY=Target_RY/1.2f;
 
 		
-		//Throttle related //油门相关
-		Remote_RCvelocity=RC_Velocity+RX;//
-	  if(Remote_RCvelocity<0)Remote_RCvelocity=0;//
+	//Throttle related //油门相关
+	Remote_RCvelocity=RC_Velocity+RX;//
+	if(Remote_RCvelocity<0)Remote_RCvelocity=0;//
 		
-		//The remote control command of model aircraft is processed
-		//对航模遥控控制命令进行处理
+	//The remote control command of model aircraft is processed
+	//对航模遥控控制命令进行处理
     Move_X= LX; 
-		Move_Y=-LY;
-		Move_Z=-RY; 
-    Move_X= Move_X*Remote_RCvelocity/500; 					//
-		Move_Y= Move_Y*Remote_RCvelocity/500;//
-		Move_Z= Move_Z*(PI/4)*(Remote_RCvelocity/500)/500;  //
+	Move_Y=-LY;
+	Move_Z=-RY; 
+    Move_X= Move_X*Remote_RCvelocity/500; 
+	Move_Y= Move_Y*Remote_RCvelocity/500;
+	Move_Z= Move_Z*(PI/4)*(Remote_RCvelocity/500)/500; 
 			 
-		//Unit conversion, mm/s -> m/s
     //单位转换，mm/s -> m/s	
-		Move_X=Move_X/1000;
+	Move_X=Move_X/1000;
     Move_Y=Move_Y/1000;
 		
-		//Data within 1 second after entering the model control mode will not be processed
-	  //对进入航模控制模式后1秒内的数据不处理
+	//Data within 1 second after entering the model control mode will not be processed
+	//对进入航模控制模式后1秒内的数据不处理
     if(thrice>0) Move_X=0,Move_Z=0,thrice--;
 			
-		//Control target value is obtained and kinematics analysis is performed
-	  //得到控制目标值，进行运动学分析			
-		Drive_Motor(Move_X,Move_Y,Move_Z);
+	//得到控制目标值，进行运动学分析			
+	Drive_Motor(Move_X,Move_Y,Move_Z);
 }
 /**************************************************************************
 Function: Click the user button to update gyroscope zero
@@ -494,25 +505,19 @@ void Get_Velocity_Form_Encoder(void)
 	//获取编码器的原始数据
 	float Encoder_A_pr,Encoder_B_pr,Encoder_C_pr,Encoder_D_pr; //用于获取编码器的原始数据 
 
-				//Obtain the original data of the encoder, and the polarity of different models of cars is also different
-	  //获取编码器的原始数据，同时不同型号的小车极性也不相同
-		//#if Mec
-			Encoder_A_pr= -Read_Encoder(2); 
-			Encoder_B_pr= -Read_Encoder(3); 
-			Encoder_C_pr=Read_Encoder(4); 
-			Encoder_D_pr=Read_Encoder(5);
-		/*#elif Omni
-			Encoder_A_pr=-Read_Encoder(2);
-			Encoder_B_pr=-Read_Encoder(3);
-			Encoder_C_pr=-Read_Encoder(4);
-		#endif
-		*/
-		//The encoder converts the raw data to wheel speed in m/s
-		//编码器原始数据转换为车轮速度，单位m/s
-		MOTOR_A.Encoder= Encoder_A_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;
-		MOTOR_B.Encoder= Encoder_B_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;
-		MOTOR_C.Encoder= Encoder_C_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;
-		MOTOR_D.Encoder= Encoder_D_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;
+	//Obtain the original data of the encoder, and the polarity of different models of cars is also different
+	//获取编码器的原始数据，同时不同型号的小车极性也不相同
+	//#if Mec
+	Encoder_A_pr= -Read_Encoder(2); 
+	Encoder_B_pr= -Read_Encoder(3); 
+	Encoder_C_pr=Read_Encoder(4); 
+	Encoder_D_pr=Read_Encoder(5);
+	//The encoder converts the raw data to wheel speed in m/s
+	//编码器原始数据转换为车轮速度，单位m/s
+	MOTOR_A.Encoder= Encoder_A_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;
+	MOTOR_B.Encoder= Encoder_B_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;
+	MOTOR_C.Encoder= Encoder_C_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;
+	MOTOR_D.Encoder= Encoder_D_pr*CONTROL_FREQUENCY*Wheel_perimeter/Encoder_precision;
 }
 /**************************************************************************
 Function: Smoothing the three axis target velocity

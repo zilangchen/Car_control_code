@@ -42,12 +42,12 @@ void pstwo_task(void *pvParameters)
     u32 lastWakeTime = getSysTickCnt();
     while(1)
     {	
-			//The task is run at 100hz
-			//此任务以100Hz的频率运行 	
-			vTaskDelayUntil(&lastWakeTime, F2T(RATE_100_HZ));
-			//Read the ps2 data
-			//读取PS2的数据	
-      PS2_Read(); 	
+		//The task is run at 100hz
+		//此任务以100Hz的频率运行 	
+		vTaskDelayUntil(&lastWakeTime, F2T(RATE_100_HZ));
+		//Read the ps2 data
+		//读取PS2的数据	
+      	PS2_Read(); 	
     }
 }  
 /**************************************************************************
@@ -60,14 +60,14 @@ Output  : none
 **************************************************************************/	
 void PS2_Init(void)
 {
-  GPIO_InitTypeDef GPIO_InitStructure;
+  	GPIO_InitTypeDef GPIO_InitStructure;
 	
 	//Enable the ability port clock
 	//使能端口时钟
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE);
 
 	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0;			//端口配置
-  GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;		//普通输入模式
+  	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN;		//普通输入模式
 	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_100MHz;	//100M
 	GPIO_InitStructure.GPIO_PuPd = GPIO_PuPd_UP;		//下拉
 	GPIO_Init(GPIOE, &GPIO_InitStructure);
@@ -93,30 +93,30 @@ void PS2_Read(void)
 	static int Strat;
 
 	//Reading key
-  //读取按键键值
+  	//读取按键键值
 	PS2_KEY=PS2_DataKey(); 
 	//Read the analog of the remote sensing x axis on the left
-  //读取左边遥感X轴方向的模拟量	
+  	//读取左边遥感X轴方向的模拟量	
 	PS2_LX=PS2_AnologData(PSS_LX); 
 	//Read the analog of the directional direction of remote sensing on the left
-  //读取左边遥感Y轴方向的模拟量	
+  	//读取左边遥感Y轴方向的模拟量	
 	PS2_LY=PS2_AnologData(PSS_LY);
 	//Read the analog of the remote sensing x axis
-  //读取右边遥感X轴方向的模拟量  
+  	//读取右边遥感X轴方向的模拟量  
 	PS2_RX=PS2_AnologData(PSS_RX);
 	//Read the analog of the directional direction of the remote sensing y axis
-  //读取右边遥感Y轴方向的模拟量  
+  	//读取右边遥感Y轴方向的模拟量  
 	PS2_RY=PS2_AnologData(PSS_RY);  
 
 	if(PS2_KEY==4&&PS2_ON_Flag==0) 
-		//The start button on the // handle is pressed
-		//手柄上的Start按键被按下
-		Strat=1; 
+	//The start button on the // handle is pressed
+	//手柄上的Start按键被按下
+	Strat=1; 
 	
 	if(Strat&&(PS2_LY<118)&&PS2_ON_Flag==0&&Deviation_Count>=CONTROL_DELAY)
-		//When the button is pressed, you need to push the right side forward to the formal ps2 control car
-		//Start按键被按下后，需要推下右边前进杆，才可以正式PS2控制小车
-		PS2_ON_Flag=1,Remote_ON_Flag=0,APP_ON_Flag=0,CAN_ON_Flag=0,Usart_ON_Flag=0;  
+	//When the button is pressed, you need to push the right side forward to the formal ps2 control car
+	//Start按键被按下后，需要推下右边前进杆，才可以正式PS2控制小车
+	PS2_ON_Flag=1,Remote_ON_Flag=0,APP_ON_Flag=0,CAN_ON_Flag=0,Usart_ON_Flag=0;  
 }
 /**************************************************************************
 Function: Send commands to the handle
@@ -192,8 +192,8 @@ void PS2_ReadData(void)
 			CLK_L;
 			DELAY_TIME;
 			CLK_H;
-		      if(DI)
-		      Data[byte] = ref|Data[byte];
+		    if(DI)
+		    	 Data[byte] = ref|Data[byte];
 		}
         delay_us(16);
 	}
@@ -218,7 +218,7 @@ u8 PS2_DataKey()
 	for(index=0;index<16;index++)
 	{	    
 		if((Handkey&(1<<(MASK[index]-1)))==0)
-		return index+1;
+			return index+1;
 	}
 	return 0;  //No buttons //没有任何按键按下
 }
@@ -262,7 +262,7 @@ void PS2_Vibration(u8 motor1, u8 motor2)
 {
 	CS_L;
 	delay_us(16);
-  PS2_Cmd(0x01); //Start order //开始命令
+  	PS2_Cmd(0x01); //Start order //开始命令
 	PS2_Cmd(0x42); //Request data //请求数据
 	PS2_Cmd(0X00);
 	PS2_Cmd(motor1);
@@ -304,7 +304,7 @@ Output  : none
 **************************************************************************/
 void PS2_EnterConfing(void)
 {
-  CS_L;
+  	CS_L;
 	delay_us(16);
 	PS2_Cmd(0x01);  
 	PS2_Cmd(0x43);  

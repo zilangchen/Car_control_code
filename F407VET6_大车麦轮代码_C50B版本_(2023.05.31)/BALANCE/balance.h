@@ -29,6 +29,10 @@ void Get_RC(void);
 void PS2_control(void);
 void Remote_Control(void);
 void Set_Pwm(int motor_a,int motor_b,int motor_c,int motor_d);
+
+void Excute_Servo_Group1(int servo_group1_command);
+void Excute_Servo_Group2(int servo_group2_command);
+
 void Drive_Motor(float Vx,float Vy,float Vz);
 void Key(void);
 void Get_Velocity_Form_Encoder(void);
