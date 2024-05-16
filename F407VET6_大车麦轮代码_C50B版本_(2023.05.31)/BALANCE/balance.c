@@ -42,7 +42,8 @@ void Balance_task(void *pvParameters)
 		*/
 
 		// 如果电池电压不存在异常，而且使能开关在ON档位，而且软件失能标志位为0，或者型号检测标志位为0
-		if (Turn_Off(voltage) == 0 /*&&robot_mode_check_flag==0*/)
+
+		if (Turn_Off(Get_battery_volt()) == 0 /*&&robot_mode_check_flag==0*/)
 		{
 			// Speed closed-loop control to calculate the PWM value of each motor,
 			// PWM represents the actual wheel speed
@@ -69,7 +70,6 @@ void Balance_task(void *pvParameters)
 
 void Excute_Servo_Group1(int servo_group1_command)
 {
-	int n;
 	if (servo_group1_command == 0)
 	{
 		TIM_SetCompare1(TIM1, 1500-500);

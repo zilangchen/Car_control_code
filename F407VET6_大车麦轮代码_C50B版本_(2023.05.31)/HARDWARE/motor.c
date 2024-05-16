@@ -167,8 +167,8 @@ void Servo_PWM_Init(u16 arr, u16 psc)
 	TIM_OCInitTypeDef TIM_OCInitStructure;		   // PWM输出
 	GPIO_InitTypeDef GPIO_InitStructure;		   // IO
 
-	NVIC_InitTypeDef NVIC_InitStructure;   // 中断优先级
-	TIM_ICInitTypeDef TIM_ICInitStructure; // 输入捕获
+	//NVIC_InitTypeDef NVIC_InitStructure;   // 中断优先级
+	//TIM_ICInitTypeDef TIM_ICInitStructure; // 输入捕获
 
 	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1, ENABLE);  // TIM1时钟使能
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE); // 使能PORTE时钟
@@ -340,5 +340,4 @@ TIM_Cmd(TIM4, ENABLE);
 // The channel value is initialized to 1500, corresponding to the steering gear zero
 // 通道值初始化为1500，舵机零点对应值
 TIM4->CCR2 = 1500;
-}
-*/
+}*/
