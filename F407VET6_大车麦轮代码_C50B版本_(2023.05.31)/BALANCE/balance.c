@@ -64,7 +64,7 @@ void Balance_task(void *pvParameters)
 }
 
 /**************************************************************************
-舵机组控制函数
+舵机组控制函数，参数还得调一下，看看实际转的情况
 **************************************************************************/
 
 void Excute_Servo_Group1(int servo_group1_command)
@@ -72,14 +72,14 @@ void Excute_Servo_Group1(int servo_group1_command)
 	int n;
 	if (servo_group1_command == 0)
 	{
-		TIM_SetCompare1(TIM1, 1500);
-		TIM_SetCompare2(TIM1, 1500);
+		TIM_SetCompare1(TIM1, 1500-500);
+		TIM_SetCompare2(TIM1, 1500+500);
 	}
 
 	else if (servo_group1_command == 1)
 	{
-		TIM_SetCompare1(TIM1, 1500);
-		TIM_SetCompare2(TIM1, 1500);
+		TIM_SetCompare1(TIM1, 1500+500);
+		TIM_SetCompare2(TIM1, 1500-500);
 	}
 }
 
@@ -87,14 +87,14 @@ void Excute_Servo_Group2(int servo_group2_command)
 {
 	if (servo_group2_command == 0)
 	{
-		TIM_SetCompare3(TIM1, 1500);
-		TIM_SetCompare4(TIM1, 1500);
+		TIM_SetCompare3(TIM1, 1500 - 500);
+		TIM_SetCompare4(TIM1, 1500 + 500);
 	}
 
 	else if (servo_group2_command == 1)
 	{
-		TIM_SetCompare3(TIM1, 1500);
-		TIM_SetCompare4(TIM1, 1500);
+		TIM_SetCompare3(TIM1, 1500 + 500);
+		TIM_SetCompare4(TIM1, 1500 - 500);
 	}
 }
 
