@@ -63,14 +63,14 @@ void Balance_task(void *pvParameters)
 
 void Excute_Servo_Group1(int servo_group1_command)
 {
-	if(servo_group1_command==0) Servo=0;
-	else if(servo_group1_command==1) Servo=1;
+	if(servo_group1_command==0) Servo_Group1_PWM = 1850;
+	else if(servo_group1_command==1) Servo_Group1_PWM = 1800;
 }
 
 void Excute_Servo_Group2(int servo_group2_command)
 {
-	if(servo_group2_command==0) Servo=0;
-	else if(servo_group2_command==1) Servo=1;
+	if(servo_group2_command==0) Servo_Group2_PWM = 1850;
+	else if(servo_group2_command==1) Servo_Group2_PWM = 1800;
 }
 
 /**************************************************************************

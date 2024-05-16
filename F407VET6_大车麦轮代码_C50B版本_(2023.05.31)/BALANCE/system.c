@@ -11,7 +11,8 @@ int Divisor_Mode;
 u8 Car_Mode=0; 
 
 //舵机控制PWM值，阿克曼小车专用
-int Servo;  
+int Servo1;
+int Servo2;  
 
 //遥控小车的默认速度，单位：mm/s
 float RC_Velocity=500; 
@@ -110,6 +111,9 @@ void systemInit(void)
 
   	//MPU6050初始化，用于读取小车三轴角速度、三轴加速度信息               		
 	MPU6050_initialize();
+
+	Servo_Group1_PWM_Init(9999,168-1);
+	Servo_Group2_PWM_Init(9999,168-1);
 
 	//初始化与PS2手柄连接的硬件接口
 	PS2_Init();
