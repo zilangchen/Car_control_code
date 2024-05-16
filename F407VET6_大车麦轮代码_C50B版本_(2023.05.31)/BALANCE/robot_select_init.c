@@ -13,7 +13,7 @@ Output  : none
 **************************************************************************/
 void Robot_Select(void)
 {
-	Robot_Init(0.25,0.25,51,17,100);
+	Robot_Init(0.20,0.133,51,17,0.1);
 	
 	
 	/*
@@ -50,22 +50,6 @@ void Robot_Select(void)
 		
 		/*
 	}*/
-
-/*
-	#elif Omni
-	{
-		if (Car_Mode==0)  Robot_Init(Omni_Turn_Radiaus_164, MD36N_5_18, Hall_13, FullDirecion_75); //SENIOR_OMNI_5_18 - 高配全向轮三角形极速型
-	  if (Car_Mode==1)  Robot_Init(Omni_Turn_Radiaus_180, MD36N_27,   Hall_13, FullDirecion_127);//SENIOR_OMNI_27   - 高配全向轮三角形常规     
-		if (Car_Mode==2)  Robot_Init(Omni_Turn_Radiaus_180, MD36N_27,   Hall_13, FullDirecion_127);//SENIOR_OMNI_27   - 高配全向轮圆形常规       
-		if (Car_Mode==3)  Robot_Init(Omni_Turn_Radiaus_180, MD36N_51,   Hall_13, FullDirecion_127);//SENIOR_OMNI_51   - 高配全向轮圆形重载       
-		
-		if (Car_Mode==4)  Robot_Init(Omni_Turn_Radiaus_290, MD60N_18,   Hall_13, FullDirecion_127);//TOP_OMNI_18      - 顶配全向轮常规 直径127   
-		if (Car_Mode==5)  Robot_Init(Omni_Turn_Radiaus_290, MD60N_18,   Hall_13, FullDirecion_152);//TOP_OMNI_18      - 顶配全向轮常规 直径152
-		if (Car_Mode==6)  Robot_Init(Omni_Turn_Radiaus_290, MD60N_18,   Hall_13, FullDirecion_203);//TOP_OMNI_18      - 顶配全向轮常规 直径203
-	}
-	#endif
-
-*/
 }
 
 

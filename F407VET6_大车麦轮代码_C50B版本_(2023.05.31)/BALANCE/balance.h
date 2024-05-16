@@ -2,17 +2,17 @@
 #define __BALANCE_H			  	 
 #include "sys.h"
 #include "system.h"
-#define BALANCE_TASK_PRIO		4     //Task priority //ÈÎÎñÓÅÏÈ¼¶
-#define BALANCE_STK_SIZE 		512   //Task stack size //ÈÎÎñ¶ÑÕ»´óÐ¡
+#define BALANCE_TASK_PRIO		4     //Task priority //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½
+#define BALANCE_STK_SIZE 		512   //Task stack size //ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½Ð¡
 
 //Parameter of kinematics analysis of omnidirectional trolley
-//È«ÏòÂÖÐ¡³µÔË¶¯Ñ§·ÖÎö²ÎÊý
+//È«ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Ë¶ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 #define X_PARAMETER    (sqrt(3)/2.f)               
 #define Y_PARAMETER    (0.5f)    
 #define L_PARAMETER    (1.0f)
 
 extern int A,B,C,DD;
-extern u8 command_lost_count;//´®¿Ú¡¢CAN¿ØÖÆÃüÁî¶ªÊ§Ê±¼ä¼ÆÊý£¬¶ªÊ§1ÃëºóÍ£Ö¹¿ØÖÆ
+extern u8 command_lost_count;//ï¿½ï¿½ï¿½Ú¡ï¿½CANï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î¶ªÊ§Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§1ï¿½ï¿½ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½
 void Balance_task(void *pvParameters);
 void Limit_Pwm(int amplitude);
 float target_limit_float(float insert,float low,float high);

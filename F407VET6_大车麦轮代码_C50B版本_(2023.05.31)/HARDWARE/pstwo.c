@@ -108,13 +108,11 @@ void PS2_Read(void)
   	//读取右边遥感Y轴方向的模拟量  
 	PS2_RY=PS2_AnologData(PSS_RY);  
 
+	//这一段没用了，我直接设成初始就ps2控制
 	if(PS2_KEY==4&&PS2_ON_Flag==0) 
-	//The start button on the // handle is pressed
 	//手柄上的Start按键被按下
 	Strat=1; 
-	
 	if(Strat&&(PS2_LY<118)&&PS2_ON_Flag==0&&Deviation_Count>=CONTROL_DELAY)
-	//When the button is pressed, you need to push the right side forward to the formal ps2 control car
 	//Start按键被按下后，需要推下右边前进杆，才可以正式PS2控制小车
 	PS2_ON_Flag=1,Remote_ON_Flag=0,APP_ON_Flag=0,CAN_ON_Flag=0,Usart_ON_Flag=0;  
 }
