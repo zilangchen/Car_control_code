@@ -454,6 +454,81 @@
               <FileType>1</FileType>
               <FilePath>..\HARDWARE\usartx.c</FilePath>
             </File>
+            <File>
+              <FileName>adc.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\adc.h</FilePath>
+            </File>
+            <File>
+              <FileName>can.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\can.h</FilePath>
+            </File>
+            <File>
+              <FileName>DataScope_DP.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\DataScope_DP.h</FilePath>
+            </File>
+            <File>
+              <FileName>dma.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\dma.h</FilePath>
+            </File>
+            <File>
+              <FileName>encoder.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\encoder.h</FilePath>
+            </File>
+            <File>
+              <FileName>exti.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\exti.h</FilePath>
+            </File>
+            <File>
+              <FileName>key.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\key.h</FilePath>
+            </File>
+            <File>
+              <FileName>LED.H</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\LED.H</FilePath>
+            </File>
+            <File>
+              <FileName>motor.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\motor.h</FilePath>
+            </File>
+            <File>
+              <FileName>oled.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\oled.h</FilePath>
+            </File>
+            <File>
+              <FileName>oledfont.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\oledfont.h</FilePath>
+            </File>
+            <File>
+              <FileName>pstwo.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\pstwo.h</FilePath>
+            </File>
+            <File>
+              <FileName>stmflash.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\stmflash.h</FilePath>
+            </File>
+            <File>
+              <FileName>timer.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\timer.h</FilePath>
+            </File>
+            <File>
+              <FileName>usartx.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\HARDWARE\usartx.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -473,6 +548,21 @@
               <FileName>usart.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\SYSTEM\usart\usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>delay.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\SYSTEM\delay\delay.h</FilePath>
+            </File>
+            <File>
+              <FileName>sys.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\SYSTEM\sys\sys.h</FilePath>
+            </File>
+            <File>
+              <FileName>usart.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\SYSTEM\usart\usart.h</FilePath>
             </File>
           </Files>
         </Group>
@@ -609,6 +699,41 @@
               <FileType>1</FileType>
               <FilePath>..\BALANCE\show.c</FilePath>
             </File>
+            <File>
+              <FileName>balance.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BALANCE\balance.h</FilePath>
+            </File>
+            <File>
+              <FileName>control.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BALANCE\control.h</FilePath>
+            </File>
+            <File>
+              <FileName>DataScope_DP.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BALANCE\DataScope_DP.h</FilePath>
+            </File>
+            <File>
+              <FileName>filter.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BALANCE\filter.h</FilePath>
+            </File>
+            <File>
+              <FileName>robot_select_init.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BALANCE\robot_select_init.h</FilePath>
+            </File>
+            <File>
+              <FileName>show.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BALANCE\show.h</FilePath>
+            </File>
+            <File>
+              <FileName>system.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>..\BALANCE\system.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -650,5 +775,14 @@
     <components/>
     <files/>
   </RTE>
+
+  <LayerInfo>
+    <Layers>
+      <Layer>
+        <LayName>WHEELTEC</LayName>
+        <LayPrjMark>1</LayPrjMark>
+      </Layer>
+    </Layers>
+  </LayerInfo>
 
 </Project>

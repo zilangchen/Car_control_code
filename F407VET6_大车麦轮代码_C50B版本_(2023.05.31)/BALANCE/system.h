@@ -86,8 +86,6 @@ extern u8 PID_Send;
 extern float PS2_LX,PS2_LY,PS2_RX,PS2_RY,PS2_KEY;
 extern int robot_mode_check_flag;
 
-extern int Servo_group_1;
-extern int Servo_group_2;
 
 void systemInit(void);
 

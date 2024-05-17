@@ -1,10 +1,13 @@
 #include "balance.h"
-
+#include "system.h"
 // Whether the robot model is incorrectly marked
 // 机器人型号是否错误标志位
 int robot_mode_check_flag = 0;
 int A = 1, B = 1, C = 1, DD = 1; // Used for testing //用于测试
 int Time_count = 0;				 // Time variable //计时变量
+
+int Servo_group_1;
+int Servo_group_2;
 
 u8 command_lost_count = 0; // 串口、CAN控制命令丢失时间计数，丢失一秒后停止控制
 
