@@ -171,7 +171,7 @@ void Servo_Group1_PWM_Init(u16 arr,u16 psc)
 	TIM_ICInitTypeDef TIM_ICInitStructure;         //输入捕获
 	TIM_OCInitTypeDef  TIM_OCInitStructure;        //PWM输出
 	
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM9,ENABLE);  	//TIM1时钟使能    
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_TIM1,ENABLE);  	//TIM1时钟使能    
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, ENABLE); 	//使能PORTE时钟	
 		
 	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF;
