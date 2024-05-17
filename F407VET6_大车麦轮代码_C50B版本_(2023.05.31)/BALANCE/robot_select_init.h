@@ -3,83 +3,82 @@
 #include "sys.h"
 #include "system.h"
 
-//Parameter structure of robot
-//»úÆ÷ÈË²ÎÊý½á¹¹Ìå
-typedef struct  
+// Parameter structure of robot
+// ï¿½ï¿½ï¿½ï¿½ï¿½Ë²ï¿½ï¿½ï¿½ï¿½á¹¹ï¿½ï¿½
+typedef struct
 {
-  float WheelSpacing;      //Wheelspacing, Mec_Car is half wheelspacing //ÂÖ¾à ÂóÂÖ³µÎª°ëÂÖ¾à
-  float AxleSpacing;       //Axlespacing, Mec_Car is half axlespacing //Öá¾à ÂóÂÖ³µÎª°ëÖá¾à	
-  int   GearRatio;         //Motor_gear_ratio //µç»ú¼õËÙ±È
-  int   EncoderAccuracy;   //Number_of_encoder_lines //±àÂëÆ÷¾«¶È(±àÂëÆ÷ÏßÊý)
-  float WheelDiameter;     //Diameter of driving wheel //Ö÷¶¯ÂÖÖ±¾¶	
-  float OmniTurnRadiaus;   //Rotation radius of omnidirectional trolley //È«ÏòÂÖÐ¡³µÐý×ª°ë¾¶
-}Robot_Parament_InitTypeDef;
+  float WheelSpacing;    // Wheelspacing, Mec_Car is half wheelspacing //ï¿½Ö¾ï¿½ ï¿½ï¿½ï¿½Ö³ï¿½Îªï¿½ï¿½ï¿½Ö¾ï¿½
+  float AxleSpacing;     // Axlespacing, Mec_Car is half axlespacing //ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö³ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½
+  int GearRatio;         // Motor_gear_ratio //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù±ï¿½
+  int EncoderAccuracy;   // Number_of_encoder_lines //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
+  float WheelDiameter;   // Diameter of driving wheel //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½
+  float OmniTurnRadiaus; // Rotation radius of omnidirectional trolley //È«ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½×ªï¿½ë¾¶
+} Robot_Parament_InitTypeDef;
 
+// half wheelspacing //ï¿½ï¿½ï¿½Ö¾ï¿½
+#define SENIOR_MEC_BS_wheelspacing 0.176
+#define SENIOR_MEC_DL_wheelspacing 0.247
+#define TOP_MEC_BS_wheelspacing 0.311
+#define TOP_MEC_DL_wheelspacing 0.295
+#define FLAGSHIP_MEC_DL_wheelspacing 0.285
+#define FLAGSHIP_MEC_BS_wheelspacing 0.292
+#define TOP_MEC_DL_wheelspacing_Customized 0.446  // Custom size //ï¿½ï¿½ï¿½Æ³ß´ï¿½
+#define Senior_MEC_DL_wheelspacing_Customized 0.3 // Custom size //ï¿½ï¿½ï¿½Æ³ß´ï¿½
 
-//half wheelspacing //°ëÂÖ¾à
-#define SENIOR_MEC_BS_wheelspacing 0.176 
-#define SENIOR_MEC_DL_wheelspacing 0.247 
-#define TOP_MEC_BS_wheelspacing    0.311
-#define TOP_MEC_DL_wheelspacing    0.295
-#define FLAGSHIP_MEC_DL_wheelspacing  0.285
-#define FLAGSHIP_MEC_BS_wheelspacing  0.292
-#define TOP_MEC_DL_wheelspacing_Customized    0.446 //Custom size //¶¨ÖÆ³ß´ç
-#define Senior_MEC_DL_wheelspacing_Customized 0.3   //Custom size //¶¨ÖÆ³ß´ç
-
-//half axlespacing //°ëÖá¾à
+// half axlespacing //ï¿½ï¿½ï¿½ï¿½ï¿½
 #define SENIOR_MEC_BS_axlespacing 0.156
-#define SENIOR_MEC_DL_axlespacing 0.214 
-#define TOP_MEC_BS_axlespacing    0.308
-#define TOP_MEC_DL_axlespacing    0.201
+#define SENIOR_MEC_DL_axlespacing 0.214
+#define TOP_MEC_BS_axlespacing 0.308
+#define TOP_MEC_DL_axlespacing 0.201
 #define FLAGSHIP_MEC_DL_axlespacing 0.178
 #define FLAGSHIP_MEC_BS_axlespacing 0.178
-#define TOP_MEC_DL_axlespacing_Customized     0.401 //Custom size //¶¨ÖÆ³ß´ç
-#define Senior_MEC_DL_axlespacing_Customized  0.24  //Custom size //¶¨ÖÆ³ß´ç
+#define TOP_MEC_DL_axlespacing_Customized 0.401   // Custom size //ï¿½ï¿½ï¿½Æ³ß´ï¿½
+#define Senior_MEC_DL_axlespacing_Customized 0.24 // Custom size //ï¿½ï¿½ï¿½Æ³ß´ï¿½
 
-//Motor_gear_ratio
-//µç»ú¼õËÙ±È
-#define   MD36N_5_18  5.18f
-#define   MD36N_27    27
-#define   MD36N_51    51
-#define   MD36N_71    71
-#define   MD60N_18    18
-#define   MD60N_47    47
+// Motor_gear_ratio
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù±ï¿½
+#define MD36N_5_18 5.18f
+#define MD36N_27 27
+#define MD36N_51 51
+#define MD36N_71 71
+#define MD60N_18 18
+#define MD60N_47 47
 
-//Number_of_encoder_lines
-//±àÂëÆ÷¾«¶È
-#define		Photoelectric_500 500
-#define	  Hall_13 					13
+// Number_of_encoder_lines
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+#define Photoelectric_500 500
+#define Hall_13 13
 
-//Mecanum wheel tire diameter series
-//ÂóÂÖÂÖÌ¥Ö±¾¶
-#define		Mecanum_60  0.060f
-#define		Mecanum_75  0.075f
-#define		Mecanum_100 0.100f
-#define		Mecanum_127 0.127f
-#define		Mecanum_152 0.152f
- 
-//Omni wheel tire diameter series
-//ÂÖ¾¶È«ÏòÂÖÖ±¾¶ÏµÁÐ
-#define	  FullDirecion_75  0.075
-#define	  FullDirecion_127 0.127
-#define	  FullDirecion_152 0.152
-#define	  FullDirecion_203 0.203
-#define	  FullDirecion_217 0.217
+// Mecanum wheel tire diameter series
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì¥Ö±ï¿½ï¿½
+#define Mecanum_60 0.060f
+#define Mecanum_75 0.075f
+#define Mecanum_100 0.100f
+#define Mecanum_127 0.127f
+#define Mecanum_152 0.152f
 
-//Rotation radius of omnidirectional trolley
-//È«ÏòÂÖÐ¡³µÐý×ª°ë¾¶
-#define   Omni_Turn_Radiaus_164 0.164
-#define   Omni_Turn_Radiaus_180 0.160 //ÐÞÕýÎª160
-#define   Omni_Turn_Radiaus_290 0.280 //ÐÞÕýÎª280
+// Omni wheel tire diameter series
+// ï¿½Ö¾ï¿½È«ï¿½ï¿½ï¿½ï¿½Ö±ï¿½ï¿½Ïµï¿½ï¿½
+#define FullDirecion_75 0.075
+#define FullDirecion_127 0.127
+#define FullDirecion_152 0.152
+#define FullDirecion_203 0.203
+#define FullDirecion_217 0.217
 
-//The encoder octave depends on the encoder initialization Settings
-//±àÂëÆ÷±¶ÆµÊý£¬È¡¾öÓÚ±àÂëÆ÷³õÊ¼»¯ÉèÖÃ
-#define   EncoderMultiples 4
-//Encoder data reading frequency
-//±àÂëÆ÷Êý¾Ý¶ÁÈ¡ÆµÂÊ
+// Rotation radius of omnidirectional trolley
+// È«ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½×ªï¿½ë¾¶
+#define Omni_Turn_Radiaus_164 0.164
+#define Omni_Turn_Radiaus_180 0.160 // ï¿½ï¿½ï¿½ï¿½Îª160
+#define Omni_Turn_Radiaus_290 0.280 // ï¿½ï¿½ï¿½ï¿½Îª280
+
+// The encoder octave depends on the encoder initialization Settings
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+#define EncoderMultiples 4
+// Encoder data reading frequency
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý¶ï¿½È¡Æµï¿½ï¿½
 #define CONTROL_FREQUENCY 100
 
-//#define PI 3.1415f  //PI //Ô²ÖÜÂÊ
+// #define PI 3.1415f  //PI //Ô²ï¿½ï¿½ï¿½ï¿½
 
 void Robot_Select(void);
 #if Mec

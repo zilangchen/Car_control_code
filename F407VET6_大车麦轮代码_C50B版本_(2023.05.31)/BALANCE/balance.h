@@ -1,45 +1,44 @@
 #ifndef __BALANCE_H
-#define __BALANCE_H			  	 
+#define __BALANCE_H
 #include "sys.h"
 #include "system.h"
-#define BALANCE_TASK_PRIO		4     //Task priority //ÈÎÎñÓÅÏÈ¼¶
-#define BALANCE_STK_SIZE 		512   //Task stack size //ÈÎÎñ¶ÑÕ»´óÐ¡
+#define BALANCE_TASK_PRIO 4  // Task priority //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È¼ï¿½
+#define BALANCE_STK_SIZE 512 // Task stack size //ï¿½ï¿½ï¿½ï¿½ï¿½Õ»ï¿½ï¿½Ð¡
 
-//Parameter of kinematics analysis of omnidirectional trolley
-//È«ÏòÂÖÐ¡³µÔË¶¯Ñ§·ÖÎö²ÎÊý
-#define X_PARAMETER    (sqrt(3)/2.f)               
-#define Y_PARAMETER    (0.5f)    
-#define L_PARAMETER    (1.0f)
+// Parameter of kinematics analysis of omnidirectional trolley
+// È«ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½Ë¶ï¿½Ñ§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+#define X_PARAMETER (sqrt(3) / 2.f)
+#define Y_PARAMETER (0.5f)
+#define L_PARAMETER (1.0f)
 
-extern int A,B,C,DD;
-extern u8 command_lost_count;//´®¿Ú¡¢CAN¿ØÖÆÃüÁî¶ªÊ§Ê±¼ä¼ÆÊý£¬¶ªÊ§1ÃëºóÍ£Ö¹¿ØÖÆ
+extern int A, B, C, DD;
+extern u8 command_lost_count; // ï¿½ï¿½ï¿½Ú¡ï¿½CANï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½î¶ªÊ§Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§1ï¿½ï¿½ï¿½Í£Ö¹ï¿½ï¿½ï¿½ï¿½
 void Balance_task(void *pvParameters);
 void Limit_Pwm(int amplitude);
-float target_limit_float(float insert,float low,float high);
-int target_limit_int(int insert,int low,int high);
-u8 Turn_Off( int voltage);
+float target_limit_float(float insert, float low, float high);
+int target_limit_int(int insert, int low, int high);
+u8 Turn_Off(int voltage);
 u32 myabs(long int a);
 float float_abs(float insert);
-int Incremental_PI_A (float Encoder,float Target);
-int Incremental_PI_B (float Encoder,float Target);
-int Incremental_PI_C (float Encoder,float Target);
-int Incremental_PI_D (float Encoder,float Target);
+int Incremental_PI_A(float Encoder, float Target);
+int Incremental_PI_B(float Encoder, float Target);
+int Incremental_PI_C(float Encoder, float Target);
+int Incremental_PI_D(float Encoder, float Target);
 
 void Get_RC(void);
 void PS2_control(void);
 void Remote_Control(void);
-void Set_Pwm(int motor_a,int motor_b,int motor_c,int motor_d);
+void Set_Pwm(int motor_a, int motor_b, int motor_c, int motor_d);
 
 void Excute_Servo_Group1(int servo_group1_command);
 void Excute_Servo_Group2(int servo_group2_command);
 
-void Drive_Motor(float Vx,float Vy,float Vz);
+void Drive_Motor(float Vx, float Vy, float Vz);
 void Key(void);
 void Get_Velocity_Form_Encoder(void);
 void robot_mode_check(void);
-//void Smooth_control(float vx, float vz, float step, float step_Vz);
+// void Smooth_control(float vx, float vz, float step, float step_Vz);
 int Smooth_steering(int currentPWM, int targetPWM, float step);
 int Mean_Filter(int data);
-void Smooth_control(float vx,float vy,float vz);
-#endif  
-
+void Smooth_control(float vx, float vy, float vz);
+#endif
