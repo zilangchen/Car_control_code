@@ -18,13 +18,13 @@ int Group2_Servo1;
 int Group2_Servo2;
 
 // 遥控小车的默认速度，单位：mm/s
-float RC_Velocity = 1200;
+float RC_Velocity = 1000;
 
 // 小车三轴目标运动速度，单位：m/s
 float Move_X, Move_Y, Move_Z;
 
 // 速度控制PID参数
-float Velocity_KP = 300, Velocity_KI = 300;
+float Velocity_KP = 50, Velocity_KI = 300;
 
 // 平滑控制中间变量，全向移动小车专用
 Smooth_Control smooth_control;
@@ -117,7 +117,7 @@ void systemInit(void)
 
 	// Servo_Group1_PWM_Init(9999,168-1);
 	// Servo_Group2_PWM_Init(9999,168-1);
-	Servo_PWM_Init(199, 16799); // pwm频率是50Hz
+	Servo_PWM_Init(19999, 167); // pwm频率是50Hz
 
 	// 初始化与PS2手柄连接的硬件接口
 	PS2_Init();

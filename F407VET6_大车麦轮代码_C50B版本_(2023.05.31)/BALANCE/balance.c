@@ -46,7 +46,7 @@ void Balance_task(void *pvParameters)
 
 		// 如果电池电压不存在异常，而且使能开关在ON档位，而且软件失能标志位为0，或者型号检测标志位为0
 
-		if (Turn_Off(Get_battery_volt()) == 0 /*&&robot_mode_check_flag==0*/)
+		if (Turn_Off(/*Get_battery_volt()*/Voltage) == 0 /*&&robot_mode_check_flag==0*/)
 		{
 			// Speed closed-loop control to calculate the PWM value of each motor,
 			// PWM represents the actual wheel speed
@@ -75,14 +75,14 @@ void Excute_Servo_Group1(int servo_group1_command)
 {
 	if (servo_group1_command == 0)
 	{
-		TIM_SetCompare1(TIM1, 1500-500);
-		TIM_SetCompare2(TIM1, 1500+500);
+		TIM_SetCompare1(TIM1, 1500);
+		TIM_SetCompare2(TIM1, 1500);
 	}
 
 	else if (servo_group1_command == 1)
 	{
-		TIM_SetCompare1(TIM1, 1500+500);
-		TIM_SetCompare2(TIM1, 1500-500);
+		TIM_SetCompare1(TIM1, 1500-800);
+		TIM_SetCompare2(TIM1, 1500+800);
 	}
 }
 
@@ -90,14 +90,14 @@ void Excute_Servo_Group2(int servo_group2_command)
 {
 	if (servo_group2_command == 0)
 	{
-		TIM_SetCompare3(TIM1, 1500 - 500);
-		TIM_SetCompare4(TIM1, 1500 + 500);
+		TIM_SetCompare3(TIM1, 1500);
+		TIM_SetCompare4(TIM1, 1500);
 	}
 
 	else if (servo_group2_command == 1)
 	{
-		TIM_SetCompare3(TIM1, 1500 + 500);
-		TIM_SetCompare4(TIM1, 1500 - 500);
+		TIM_SetCompare3(TIM1, 1500 + 700);
+		TIM_SetCompare4(TIM1, 1500 - 700);
 	}
 }
 
@@ -318,10 +318,10 @@ int Incremental_PI_A(float Encoder, float Target)
 	static float Bias, Pwm, Last_bias;
 	Bias = Target - Encoder; // Calculate the deviation //计算偏差
 	Pwm += Velocity_KP * (Bias - Last_bias) + Velocity_KI * Bias;
-	if (Pwm > 16800)
-		Pwm = 16800;
-	if (Pwm < -16800)
-		Pwm = -16800;
+	if (Pwm > 16000)
+		Pwm = 16000;
+	if (Pwm < -16000)
+		Pwm = -16000;
 	Last_bias = Bias; // Save the last deviation //保存上一次偏差
 	return Pwm;
 }
@@ -330,10 +330,10 @@ int Incremental_PI_B(float Encoder, float Target)
 	static float Bias, Pwm, Last_bias;
 	Bias = Target - Encoder; // Calculate the deviation //计算偏差
 	Pwm += Velocity_KP * (Bias - Last_bias) + Velocity_KI * Bias;
-	if (Pwm > 16800)
-		Pwm = 16800;
-	if (Pwm < -16800)
-		Pwm = -16800;
+	if (Pwm > 16000)
+		Pwm = 16000;
+	if (Pwm < -16000)
+		Pwm = -16000;
 	Last_bias = Bias; // Save the last deviation //保存上一次偏差
 	return Pwm;
 }
@@ -342,10 +342,10 @@ int Incremental_PI_C(float Encoder, float Target)
 	static float Bias, Pwm, Last_bias;
 	Bias = Target - Encoder; // Calculate the deviation //计算偏差
 	Pwm += Velocity_KP * (Bias - Last_bias) + Velocity_KI * Bias;
-	if (Pwm > 16800)
-		Pwm = 16800;
-	if (Pwm < -16800)
-		Pwm = -16800;
+	if (Pwm > 16000)
+		Pwm = 16000;
+	if (Pwm < -16000)
+		Pwm = -16000;
 	Last_bias = Bias; // Save the last deviation //保存上一次偏差
 	return Pwm;
 }
@@ -354,10 +354,10 @@ int Incremental_PI_D(float Encoder, float Target)
 	static float Bias, Pwm, Last_bias;
 	Bias = Target - Encoder; // Calculate the deviation //计算偏差
 	Pwm += Velocity_KP * (Bias - Last_bias) + Velocity_KI * Bias;
-	if (Pwm > 16800)
-		Pwm = 16800;
-	if (Pwm < -16800)
-		Pwm = -16800;
+	if (Pwm > 16000)
+		Pwm = 16000;
+	if (Pwm < -16000)
+		Pwm = -16000;
 	Last_bias = Bias; // Save the last deviation //保存上一次偏差
 	return Pwm;
 }
@@ -398,14 +398,14 @@ void PS2_control(void)
 		RC_Velocity -= 5; // To slow down //减速
 
 	if (PS2_KEY == 13)
-		Servo_group_1 = 0;
-	else if (PS2_KEY == 14)
 		Servo_group_1 = 1;
+	else if (PS2_KEY == 14)
+		Servo_group_1 = 0;
 
 	if (PS2_KEY == 15)
-		Servo_group_2 = 0;
-	else if (PS2_KEY == 16)
 		Servo_group_2 = 1;
+	else if (PS2_KEY == 16)
+		Servo_group_2 = 0;
 
 	if (RC_Velocity < 0)
 		RC_Velocity = 0;
@@ -459,10 +459,10 @@ void Get_Velocity_Form_Encoder(void)
 	// Obtain the original data of the encoder, and the polarity of different models of cars is also different
 	// 获取编码器的原始数据，同时不同型号的小车极性也不相同
 	// #if Mec
-	Encoder_A_pr = -Read_Encoder(2);
-	Encoder_B_pr = -Read_Encoder(3);
-	Encoder_C_pr = Read_Encoder(4);
-	Encoder_D_pr = Read_Encoder(5);
+	Encoder_A_pr = Read_Encoder(2);
+	Encoder_B_pr = Read_Encoder(3);
+	Encoder_C_pr = -Read_Encoder(4);
+	Encoder_D_pr = -Read_Encoder(5);
 	// The encoder converts the raw data to wheel speed in m/s
 	// 编码器原始数据转换为车轮速度，单位m/s
 	MOTOR_A.Encoder = Encoder_A_pr * CONTROL_FREQUENCY * Wheel_perimeter / Encoder_precision;
@@ -517,19 +517,19 @@ void Smooth_control(float vx, float vy, float vz)
 // Function: Smoothing the front wheel steering speed to prevent excessive steering gear current
 // Input   : Current servo PWM, Target servo PWM, Smooth value
 // Output  : none
-// 函数功能：对前轮转向速度做平滑处理，防止舵机电流过大
+// 函数功能：对舵机速度做平滑处理，防止舵机电流过大
 // 入口参数：当前舵机控制PWM值 目标舵机控制PWM值 平滑值
 // 返回  值：无
 //**************************************************************************/
-// int Smooth_steering(int currentPWM, int targetPWM, float step)
-//{
-//	int threshold=7;
-//	if     (targetPWM>currentPWM+threshold) currentPWM+=step;
-//	else if(targetPWM<currentPWM-threshold) currentPWM-=step;
-//	else                                    currentPWM =targetPWM;
-//
-//	return currentPWM;
-// }
+int Smooth_steering(int currentPWM, int targetPWM, float step)
+{
+	int threshold=7;
+	if     (targetPWM>currentPWM+threshold) currentPWM+=step;
+	else if(targetPWM<currentPWM-threshold) currentPWM-=step;
+	else                                    currentPWM =targetPWM;
+
+	return currentPWM;
+ }
 
 /**************************************************************************
 Function: Prevent the potentiometer to choose the wrong mode, resulting in initialization error caused by the motor spinning.
