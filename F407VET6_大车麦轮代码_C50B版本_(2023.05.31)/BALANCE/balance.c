@@ -378,7 +378,7 @@ void PS2_control(void)
 	// 128为中值。PS2坐标系与ROS坐标系对X、Y的定义不一样
 	LY = -(PS2_LX - 128);
 	LX = -(PS2_LY - 128);
-	RY = -(PS2_RX - 128);
+	RY = (PS2_RX - 128);
 
 	// Ignore small movements of the joystick //忽略摇杆小幅度动作
 	if (LX > -Threshold && LX < Threshold)
