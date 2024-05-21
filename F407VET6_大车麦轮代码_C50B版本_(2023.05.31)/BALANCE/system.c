@@ -24,7 +24,7 @@ float RC_Velocity = 1000;
 float Move_X, Move_Y, Move_Z;
 
 // 速度控制PID参数
-float Velocity_KP = 500, Velocity_KI = 500;
+float Velocity_KP = 20000, Velocity_KI = 500;
 
 // 平滑控制中间变量，全向移动小车专用
 Smooth_Control smooth_control;

@@ -11,6 +11,9 @@ int Servo_group_2;
 
 u8 command_lost_count = 0; // 串口、CAN控制命令丢失时间计数，丢失一秒后停止控制
 
+//control frequency should be 1000 in roboselection, but after correcting it the motor can not run well, then we change the show.c to 
+//lie to ourselves the encoder is right.
+
 /**************************************************************************
 函数功能：FreeRTOS任务，核心运动控制任务
 入口参数：无
@@ -22,7 +25,7 @@ void Balance_task(void *pvParameters)
 	while (1)
 	{
 		// 此任务以100Hz的频率运行（10ms控制一次）
-		vTaskDelayUntil(&lastWakeTime, F2T(RATE_100_HZ));
+		vTaskDelayUntil(&lastWakeTime, F2T(RATE_1000_HZ));
 
 		// 时间计数，30秒后不再需要
 		if (Time_count < 3000)
@@ -318,10 +321,14 @@ int Incremental_PI_A(float Encoder, float Target)
 	static float Bias, Pwm, Last_bias;
 	Bias = Target - Encoder; // Calculate the deviation //计算偏差
 	Pwm += Velocity_KP * (Bias - Last_bias) + Velocity_KI * Bias;
-	if (Pwm > 16000)
-		Pwm = 16000;
-	if (Pwm < -16000)
-		Pwm = -16000;
+	/*
+	if (Target == 0)
+		Pwm = 0; 
+	*/
+	if (Pwm > 16800)
+		Pwm = 16800;
+	if (Pwm < -16800)
+		Pwm = -16800;
 	Last_bias = Bias; // Save the last deviation //保存上一次偏差
 	return Pwm;
 }
@@ -330,10 +337,10 @@ int Incremental_PI_B(float Encoder, float Target)
 	static float Bias, Pwm, Last_bias;
 	Bias = Target - Encoder; // Calculate the deviation //计算偏差
 	Pwm += Velocity_KP * (Bias - Last_bias) + Velocity_KI * Bias;
-	if (Pwm > 16000)
-		Pwm = 16000;
-	if (Pwm < -16000)
-		Pwm = -16000;
+	if (Pwm > 16800)
+		Pwm = 16800;
+	if (Pwm < -16800)
+		Pwm = -16800;
 	Last_bias = Bias; // Save the last deviation //保存上一次偏差
 	return Pwm;
 }
@@ -342,10 +349,10 @@ int Incremental_PI_C(float Encoder, float Target)
 	static float Bias, Pwm, Last_bias;
 	Bias = Target - Encoder; // Calculate the deviation //计算偏差
 	Pwm += Velocity_KP * (Bias - Last_bias) + Velocity_KI * Bias;
-	if (Pwm > 16000)
-		Pwm = 16000;
-	if (Pwm < -16000)
-		Pwm = -16000;
+	if (Pwm > 16800)
+		Pwm = 16800;
+	if (Pwm < -16800)
+		Pwm = -16800;
 	Last_bias = Bias; // Save the last deviation //保存上一次偏差
 	return Pwm;
 }
@@ -354,10 +361,10 @@ int Incremental_PI_D(float Encoder, float Target)
 	static float Bias, Pwm, Last_bias;
 	Bias = Target - Encoder; // Calculate the deviation //计算偏差
 	Pwm += Velocity_KP * (Bias - Last_bias) + Velocity_KI * Bias;
-	if (Pwm > 16000)
-		Pwm = 16000;
-	if (Pwm < -16000)
-		Pwm = -16000;
+	if (Pwm > 16800)
+		Pwm = 16800;
+	if (Pwm < -16800)
+		Pwm = -16800;
 	Last_bias = Bias; // Save the last deviation //保存上一次偏差
 	return Pwm;
 }
@@ -480,7 +487,8 @@ Output  : none
 **************************************************************************/
 void Smooth_control(float vx, float vy, float vz)
 {
-	float step = 0.02;
+	
+	float step = 0.01;
 
 	if (vx > smooth_control.VX)
 		smooth_control.VX += step;
@@ -509,6 +517,7 @@ void Smooth_control(float vx, float vy, float vz)
 		smooth_control.VY = 0;
 	if (vz == 0 && smooth_control.VZ < 0.05f && smooth_control.VZ > -0.05f)
 		smooth_control.VZ = 0;
+		
 }
 
 // 加一段程序来限制一下舵机电流吧，参考下面这个

@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\OBJ\WHEELTEC.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\OBJ\WHEELTEC.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Sun May 19 10:52:09 2024
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060960: Last Updated: Tue May 21 13:44:07 2024
 <BR><P>
 <H3>Maximum Stack Usage =        344 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -2186,8 +2186,8 @@ Global Symbols
 <BR><BR>[Called By]<UL><LI><a href="#[ee]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowNumber
 </UL>
 
-<P><STRONG><a name="[138]"></a>oled_show</STRONG> (Thumb, 1200 bytes, Stack size 32 bytes, show.o(i.oled_show))
-<BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = oled_show &rArr; Get_adc_Average &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf
+<P><STRONG><a name="[138]"></a>oled_show</STRONG> (Thumb, 1216 bytes, Stack size 40 bytes, show.o(i.oled_show))
+<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = oled_show &rArr; Get_adc_Average &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[bf]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_adc_Average
 <LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;OLED_ShowString
@@ -2231,7 +2231,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[65]"></a>show_task</STRONG> (Thumb, 186 bytes, Stack size 8 bytes, show.o(i.show_task))
-<BR><BR>[Stack]<UL><LI>Max Depth = 168<LI>Call Chain = show_task &rArr; oled_show &rArr; Get_adc_Average &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf
+<BR><BR>[Stack]<UL><LI>Max Depth = 176<LI>Call Chain = show_task &rArr; oled_show &rArr; Get_adc_Average &rArr; delay_ms &rArr; vTaskDelay &rArr; xTaskResumeAll &rArr; xTaskIncrementTick &rArr; __2printf
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Get_battery_volt
 <LI><a href="#[8c]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;vTaskDelayUntil
